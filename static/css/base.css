@@ -7,23 +7,35 @@ h1 {
     width: auto;
 }
 
-/* Basic header style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
 header {
-    background-color: #f8f8f8;
-    padding: 10px 0;
-    text-align: center;
+    display: flex;
+    justify-content: space-between; /* Spread out the links */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #4CAF50;
 }
 
-/* Styling for the links */
 header a {
-    color: #333;
     text-decoration: none;
-    margin: 0 20px;
-    font-size: 16px;
+    color: white;
+    padding: 10px;
+    transition: background-color 0.3s;
 }
 
-/* Hover effect */
 header a:hover {
-    color: #007BFF;
+    background-color: #45a049;
 }
 
+header a:last-child {
+    margin-left: auto; /* Push 'Log Out' to the right side */
+}
