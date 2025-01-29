@@ -1,8 +1,28 @@
 h1 {
-    color: #4ac1f7;
+    color: #50f74a;
 }
 
 .mylogo {
     height: 300px;
     width: auto;
+}
+
+/* Basic header style */
+header {
+    background-color: #f8f8f8;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Styling for the links */
+header a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 16px;
+}
+
+/* Hover effect */
+header a:hover {
+    color: #007BFF;
 }
