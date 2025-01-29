@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 class HomePageView(LoginRequiredMixin, TemplateView):
     template_name = 'app/home.html'
@@ -69,5 +70,10 @@ def signup_view(request):
         form = UserCreationForm()
 
     return render(request, 'app/signup.html', {'form': form})
+
+@login_required()
+def profile_view(request):
+    return render(request, 'app/profile.html')
+
 
 
