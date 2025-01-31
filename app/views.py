@@ -9,6 +9,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .models import Budget, Expense
+from .forms import BudgetForm, ExpenseForm
+
 
 class HomePageView(LoginRequiredMixin, TemplateView):
     template_name = 'app/home.html'
@@ -47,7 +50,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('profile')
+            return redirect('home')
     else:
         form = AuthenticationForm()
     return render(request, 'app/login.html', {'form': form})
@@ -75,5 +78,40 @@ def signup_view(request):
 def profile_view(request):
     return render(request, 'app/profile.html')
 
+
+# Dashboard view
+@login_required
+def dashboard(request):
+    budgets = Budget.objects.filter(user=request.user)
+    return render(request, 'app/dashboard.html', {'budgets': budgets})
+
+# Create a new budget
+@login_required
+def create_budget(request):
+    if request.method == 'POST':
+        form = BudgetForm(request.POST)
+        if form.is_valid():
+            budget = form.save(commit=False)
+            budget.user = request.user
+            budget.save()
+            return redirect('dashboard')
+    else:
+        form = BudgetForm()
+    return render(request, 'app/create_budget.html', {'form': form})
+
+# Add an expense to a specific budget
+@login_required
+def add_expense(request, budget_id):
+    budget = Budget.objects.get(id=budget_id)
+    if request.method == 'POST':
+        form = ExpenseForm(request.POST)
+        if form.is_valid():
+            expense = form.save(commit=False)
+            expense.budget = budget
+            expense.save()
+            return redirect('dashboard')
+    else:
+        form = ExpenseForm()
+    return render(request, 'app/add_expense.html', {'form': form, 'budget': budget})
 
 

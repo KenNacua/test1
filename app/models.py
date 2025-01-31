@@ -19,3 +19,28 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
+class Budget(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="budgets")
+    name = models.CharField(max_length=100)  # e.g., "January Budget"
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2)  # Total budget for the month
+    start_date = models.DateField()
+    end_date = models.DateField()
+
+    def __str__(self):
+        return f"{self.name} - {self.user.username}"
+
+    def total_expenses(self):
+        return self.expenses.aggregate(models.Sum('amount'))['amount__sum'] or 0
+
+    def remaining_budget(self):
+        return self.total_amount - self.total_expenses()
+
+class Expense(models.Model):
+    budget = models.ForeignKey(Budget, on_delete=models.CASCADE, related_name="expenses")
+    description = models.CharField(max_length=200)  # e.g., "Groceries"
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.description} - {self.amount}"
