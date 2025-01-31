@@ -81,6 +81,16 @@ def profile_view(request):
 @login_required
 def dashboard(request):
     budgets = Budget.objects.filter(user=request.user)
+
+    category_filter = request.GET.get('category')
+    date_filter = request.GET.get('start_date')
+
+    if category_filter:
+        budgets = budgets.filter(expenses__category__name=category_filter)
+
+    if date_filter:
+        budgets = budgets.filter(start_date__gte=date_filter)
+
     return render(request, 'app/dashboard.html', {'budgets': budgets})
 
 # Create a new budget
@@ -101,6 +111,9 @@ def create_budget(request):
 @login_required
 def add_expense(request, budget_id):
     budget = Budget.objects.get(id=budget_id)
+    if budget.user != request.user:
+        return redirect('dashboard')
+
     if request.method == 'POST':
         form = ExpenseForm(request.POST)
         if form.is_valid():
