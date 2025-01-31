@@ -1,15 +1,16 @@
-
 /* General styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    padding-top: 20px;
+    padding-top: 0; /* Removed padding-top from body */
 }
 
+/* Heading styling */
 h2, h3, h4 {
     color: #4CAF50;
     margin-bottom: 20px; /* Space below headings */
+    margin-top: 0px;    /* Add top margin to give space from the top */
 }
 
 /* Navbar */
@@ -32,6 +33,7 @@ h2, h3, h4 {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    margin-top: 0px; /* Add margin-top to create space below navbar */
 }
 
 /* Card-like layout for Budget and Expenses */
@@ -142,6 +144,7 @@ h4 {
     margin-top: 20px;    /* Space above the "Expenses" heading */
     margin-bottom: 10px; /* Space below the "Expenses" heading */
 }
+
 /* Responsive design */
 @media (max-width: 768px) {
     .container {
