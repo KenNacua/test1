@@ -1,6 +1,16 @@
-{% extends 'app/base.html' %}
 {% load static %}
+<head>
+    <title>About</title>
+    <link rel="icon" href="{% static 'images/coin logo.jpg' %}">
+</head>
+{% include 'app/base.html' %}
 {% block content %}
     <h1>This is about page</h1>
 <img class="mylogo" src="{% static 'images/oiiai.jpeg' %}">
+<style>
+    .mylogo {
+    height: 300px;
+    width: auto;
+}
+</style>
 {% endblock content %}
