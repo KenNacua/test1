@@ -16,7 +16,7 @@ body {
 
 header {
     display: flex;
-    justify-content: space-between; /* Spread out the links */
+    justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -34,5 +34,5 @@ header a:hover {
 }
 
 header a:last-child {
-    margin-left: auto; /* Push 'Log Out' to the right side */
+    margin-left: auto;
 }

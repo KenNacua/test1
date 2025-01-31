@@ -93,7 +93,6 @@ def dashboard(request):
 
     return render(request, 'app/dashboard.html', {'budgets': budgets})
 
-# Create a new budget
 @login_required
 def create_budget(request):
     if request.method == 'POST':
@@ -107,7 +106,6 @@ def create_budget(request):
         form = BudgetForm()
     return render(request, 'app/create_budget.html', {'form': form})
 
-# Add an expense to a specific budget
 @login_required
 def add_expense(request, budget_id):
     budget = Budget.objects.get(id=budget_id)
@@ -128,7 +126,7 @@ def add_expense(request, budget_id):
 @login_required
 def edit_expense(request, expense_id):
     expense = Expense.objects.get(id=expense_id)
-    if expense.budget.user != request.user:  # Make sure user owns the expense
+    if expense.budget.user != request.user:
         return redirect('dashboard')
 
     if request.method == 'POST':
@@ -144,16 +142,16 @@ def edit_expense(request, expense_id):
 @login_required
 def delete_expense(request, expense_id):
     expense = Expense.objects.get(id=expense_id)
-    if expense.budget.user != request.user:  # Ensure the user owns the expense
+    if expense.budget.user != request.user:
         return redirect('dashboard')
 
-    expense.delete()  # Delete the expense from the database
+    expense.delete()
     return redirect('dashboard')
 
 @login_required
 def edit_budget(request, budget_id):
     budget = Budget.objects.get(id=budget_id)
-    if budget.user != request.user:  # Ensure user owns the budget
+    if budget.user != request.user:
         return redirect('dashboard')
 
     if request.method == 'POST':
@@ -169,8 +167,8 @@ def edit_budget(request, budget_id):
 @login_required
 def delete_budget(request, budget_id):
     budget = Budget.objects.get(id=budget_id)
-    if budget.user != request.user:  # Ensure the user owns the budget
+    if budget.user != request.user:
         return redirect('dashboard')
 
-    budget.delete()  # Delete the budget
+    budget.delete()
     return redirect('dashboard')

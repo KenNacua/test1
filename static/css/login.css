@@ -1,5 +1,3 @@
-/* login.css */
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -16,7 +14,7 @@ h2 {
     font-size: 2rem;
     color: #333;
     margin-bottom: 20px;
-    text-align: center;  /* Ensures it is centered */
+    text-align: center;
 }
 
 form {
@@ -27,7 +25,7 @@ form {
     width: 100%;
     max-width: 400px;
     box-sizing: border-box;
-    margin-bottom: 20px; /* Adds space below the form */
+    margin-bottom: 20px;
     align-items: center;
 }
 

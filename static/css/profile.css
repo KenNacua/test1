@@ -1,4 +1,3 @@
-/* General page styling */
 .content-section {
     max-width: 900px;
     margin: 0 auto;
@@ -8,7 +7,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Profile image styling */
+
 .account-img {
     width: 80px;
     height: 80px;
@@ -17,13 +16,13 @@
     margin-right: 20px;
 }
 
-/* Media layout */
+
 .media {
     display: flex;
     align-items: center;
 }
 
-/* Heading (username) styling */
+
 .account-heading {
     font-size: 2rem;
     font-weight: bold;
@@ -31,20 +30,20 @@
     color: #333;
 }
 
-/* Email text styling */
+
 .text-secondary {
     font-size: 1rem;
     color: #777;
     margin-top: 0;
 }
 
-/* Optional: Add a slight hover effect to the profile section */
+
 .content-section:hover {
     background-color: #ffffff;
     transition: background-color 0.3s ease;
 }
 
-/* Responsive design adjustments */
+
 @media (max-width: 768px) {
     .media {
         flex-direction: column;

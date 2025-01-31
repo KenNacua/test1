@@ -1,19 +1,25 @@
-/* General styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    padding-top: 0; /* Removed padding-top from body */
+    padding-top: 0;
 }
 
-/* Heading styling */
+.account-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
 h2, h3, h4 {
     color: #4CAF50;
-    margin-bottom: 20px; /* Space below headings */
-    margin-top: 0px;    /* Add top margin to give space from the top */
+    margin-bottom: 20px;
+    margin-top: 0px;
 }
 
-/* Navbar */
+
 .navbar {
     background-color: #4CAF50;
 }
@@ -28,15 +34,15 @@ h2, h3, h4 {
     background-color: #45a049;
 }
 
-/* Main content container */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    margin-top: 0px; /* Add margin-top to create space below navbar */
+    margin-top: 0px;
 }
 
-/* Card-like layout for Budget and Expenses */
+
 .card {
     background-color: white;
     border-radius: 8px;
@@ -45,46 +51,46 @@ h2, h3, h4 {
     margin-bottom: 20px;
 }
 
-/* Flex container for budget content and chart */
+
 .card-body {
-    display: flex;              /* Enable Flexbox layout */
-    flex-wrap: wrap;            /* Allow wrapping for responsive layout */
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
-/* Left side (budget details) */
+
 .card-details {
-    margin-bottom: 30px; /* Add space at the bottom of the details section */
+    margin-bottom: 30px;
 }
 
-/* Right side (pie chart) */
+
 .card-chart {
-    flex-basis: 400px;          /* Fixed width for the chart */
-    max-width: 100%;            /* Ensure chart is not too wide */
+    flex-basis: 400px;
+    max-width: 100%;
     display: flex;
     justify-content: center;
 }
 
-/* Buttons */
+
 button, .btn {
     background-color: #4CAF50;
     color: white;
-    padding: 8px 16px;      /* Reduced padding to make the buttons less wide */
+    padding: 8px 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     display: inline-block;
-    margin-bottom: 10px;    /* Space between buttons */
-    max-width: 200px;       /* Set a maximum width to avoid buttons stretching too much */
-    width: auto;            /* Let the button size be determined by its content */
-    text-align: center;     /* Ensure text is centered in the button */
+    margin-bottom: 10px;
+    max-width: 200px;
+    width: auto;
+    text-align: center;
 }
 
 button:hover, .btn:hover {
     background-color: #45a049;
 }
 
-/* Ensure buttons are aligned and not overlapping text */
+
 a.btn {
     display: inline-block;
     margin-bottom: 15px;
@@ -95,13 +101,13 @@ ul {
 }
 
 p {
-    margin-bottom: 15px; /* Add space between paragraphs */
-    line-height: 1.5;     /* Adjust line height for better readability */
+    margin-bottom: 15px;
+    line-height: 1.5;
 }
 
 ul li {
     padding: 8px;
-    margin-bottom: 15px;  /* Add space below each list item */
+    margin-bottom: 15px;
     border-bottom: 1px solid #ddd;
 }
 
@@ -114,7 +120,7 @@ ul li a:hover {
     color: #388e3c;
 }
 
-/* Add Expense and Edit/Delete links */
+
 a {
     color: #4CAF50;
     text-decoration: none;
@@ -124,12 +130,12 @@ a:hover {
     color: #388e3c;
 }
 
-/* Chart styling */
+
 canvas {
     margin-top: 20px;
 }
 
-/* Adjust spacing for each Budget block */
+
 .card-body h4 {
     margin-top: 15px;
     margin-bottom: 10px;
@@ -141,11 +147,16 @@ canvas {
 }
 
 h4 {
-    margin-top: 20px;    /* Space above the "Expenses" heading */
-    margin-bottom: 10px; /* Space below the "Expenses" heading */
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-/* Responsive design */
+h2 {
+    margin-top: 20px
+}
+
+
+
 @media (max-width: 768px) {
     .container {
         padding: 10px;
@@ -156,7 +167,7 @@ h4 {
     }
 
     .card-body {
-        flex-direction: column; /* Stack content vertically on small screens */
+        flex-direction: column;
     }
 
     h3 {
