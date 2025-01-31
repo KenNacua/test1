@@ -125,4 +125,52 @@ def add_expense(request, budget_id):
         form = ExpenseForm()
     return render(request, 'app/add_expense.html', {'form': form, 'budget': budget})
 
+@login_required
+def edit_expense(request, expense_id):
+    expense = Expense.objects.get(id=expense_id)
+    if expense.budget.user != request.user:  # Make sure user owns the expense
+        return redirect('dashboard')
 
+    if request.method == 'POST':
+        form = ExpenseForm(request.POST, instance=expense)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = ExpenseForm(instance=expense)
+
+    return render(request, 'app/edit_expense.html', {'form': form, 'expense': expense})
+
+@login_required
+def delete_expense(request, expense_id):
+    expense = Expense.objects.get(id=expense_id)
+    if expense.budget.user != request.user:  # Ensure the user owns the expense
+        return redirect('dashboard')
+
+    expense.delete()  # Delete the expense from the database
+    return redirect('dashboard')
+
+@login_required
+def edit_budget(request, budget_id):
+    budget = Budget.objects.get(id=budget_id)
+    if budget.user != request.user:  # Ensure user owns the budget
+        return redirect('dashboard')
+
+    if request.method == 'POST':
+        form = BudgetForm(request.POST, instance=budget)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = BudgetForm(instance=budget)
+
+    return render(request, 'app/edit_budget.html', {'form': form, 'budget': budget})
+
+@login_required
+def delete_budget(request, budget_id):
+    budget = Budget.objects.get(id=budget_id)
+    if budget.user != request.user:  # Ensure the user owns the budget
+        return redirect('dashboard')
+
+    budget.delete()  # Delete the budget
+    return redirect('dashboard')

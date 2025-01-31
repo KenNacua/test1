@@ -2,15 +2,14 @@
 <head>
     <title>Expense</title>
     <link rel="icon" href="{% static 'images/coin logo.jpg' %}">
-
 </head>
 {% include 'app/navbar.html' %}
 
 {% block content %}
-<h2>Add an Expense to {{ budget.name }}</h2>
+<h2>Edit Expense</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Add Expense</button>
+    <button type="submit">Save Changes</button>
 </form>
 {% endblock %}
