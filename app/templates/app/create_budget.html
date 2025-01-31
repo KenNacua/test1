@@ -1,4 +1,9 @@
-{% extends "app/base.html" %}
+{% load static %}
+<head>
+    <title>Budget</title>
+    <link rel="icon" href="{% static 'images/coin logo.jpg' %}">
+</head>
+{% include 'app/navbar.html' %}
 
 {% block content %}
 <h2>Create a New Budget</h2>

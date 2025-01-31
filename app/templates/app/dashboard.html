@@ -1,4 +1,9 @@
-{% extends "app/base.html" %}
+{% load static %}
+<head>
+    <title>Dashboard</title>
+    <link rel="icon" href="{% static 'images/coin logo.jpg' %}">
+</head>
+{% include 'app/navbar.html' %}
 
 {% block content %}
 <h2>Your Dashboard</h2>
@@ -7,9 +12,9 @@
 <div>
     {% for budget in budgets %}
     <h3>{{ budget.name }} ({{ budget.start_date }} to {{ budget.end_date }})</h3>
-    <p>Total Budget: ${{ budget.total_amount }}</p>
-    <p>Total Expenses: ${{ budget.total_expenses }}</p>
-    <p>Remaining: ${{ budget.remaining_budget }}</p>
+    <p>Total Budget: ₱{{ budget.total_amount }}</p>
+    <p>Total Expenses: ₱{{ budget.total_expenses }}</p>
+    <p>Remaining: ₱{{ budget.remaining_budget }}</p>
     <a href="{% url 'add_expense' budget.id %}">Add Expense</a>
     {% endfor %}
 </div>
